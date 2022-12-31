@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     'account',
     'applicant_profile',
     'employer_profile',
-    'job'
+    'job',
+    'job_posted'
 ]
 
 MIDDLEWARE = [

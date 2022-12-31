@@ -45,9 +45,10 @@ class Job(models.Model):
 
     @property
     def is_job_active(self):
-        days_till = self.time_till()
-        if days_till > 0:
+        today = date.today()
+        days_till = self.application_deadline - today
+        days_remaining = str(days_till).split(",")[0].split(" ")[0]
+        if int(days_remaining)>0:
             return True
-        return False
 
 
