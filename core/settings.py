@@ -125,3 +125,12 @@ AUTH_USER_MODEL = "account.User"
 
 # Jwt secret
 JWT_SECRET = "Ajsksl89#@124265jdkT"
+
+# email config
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_PORT = '2525'
+EMAIL_HOST_USER = 'd188059f4d1cc6'
+EMAIL_HOST_PASSWORD = '2cbc99bccd514e'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
