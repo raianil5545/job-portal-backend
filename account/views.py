@@ -1,7 +1,6 @@
 from rest_framework.views import APIView
-from rest_framework import views, response, exceptions, permissions
+from rest_framework import views, response, exceptions, permissions, status
 
-from . import models
 from . import serializer as user_serializer
 from . import services
 from . import authentication
@@ -9,6 +8,9 @@ from . import authentication
 
 class RegisterView(APIView):
     def post(self, request):
+        user = services.user_email_selector(email=request.data["email"])
+        if user:
+            return response.Response(data=f"{user.email} already exist", status=status.HTTP_400_BAD_REQUEST)
         serializer = user_serializer.UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         data = serializer.validated_data
