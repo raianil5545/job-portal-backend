@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class JobPostedConfig(AppConfig):
+class ApplyjobsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'job_posted'
+    name = 'applyjobs'

@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'applicant_profile',
     'employer_profile',
     'job',
-    'job_posted'
+    'applyjobs',
 ]
 
 MIDDLEWARE = [
