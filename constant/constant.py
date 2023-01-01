@@ -1,14 +1,14 @@
 JOB_LEVEL_CHOICES = (
-    ("entry Level", "entry level"),
-    ("mid Level", "mid level"),
-    ("senior Level", "senior level"),
-    ("top Level", "top level")
+    ("entry level", "entry level"),
+    ("mid level", "mid level"),
+    ("senior level", "senior level"),
+    ("top level", "top level")
 )
 
 PROVINCE_CHOICE = (
     ("lumbini", "lumbini"),
     ("madesh", "madesh"),
-    ("gagmati", "bagmati"),
+    ("bagmati", "bagmati"),
     ("gandaki", "gandaki"),
     ("karnali", "karnali"),
     ("sudur paschim", "sudur paschim"),

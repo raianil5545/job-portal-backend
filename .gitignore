@@ -2,3 +2,6 @@
 profile_pic
 upload_cover_pic
 upload_logo
+.pytest_cache
+tests/api/__pycache__/
+tests/__pycache__/
