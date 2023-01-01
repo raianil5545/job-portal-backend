@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from datetime import datetime
 from django_mysql.models import ListCharField
+from constant.constant import PROVINCE_CHOICE
 
 
 def upload_logo_path(instance, title):
@@ -32,7 +33,8 @@ class EmployerProfile(models.Model):
     city = models.CharField(verbose_name="company city",
                             max_length=100)
     province = models.CharField(verbose_name="province",
-                                max_length=100)
+                                max_length=100,
+                                choices=PROVINCE_CHOICE)
     locations = ListCharField(base_field=models.CharField(max_length=100),
                               size=10,
                               max_length=(11 * 101),

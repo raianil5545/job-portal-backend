@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from account import authentication
 from . import serializer as job_serializer
 from . import models
+from employer_profile.models import EmployerProfile
 
 
 class JobsOperations(permissions.BasePermission):
@@ -40,9 +41,13 @@ class JobViewSet(ModelViewSet):
         pk = kwargs.get("pk")
         job = get_object_or_404(models.Job, pk=pk)
         serializer = job_serializer.JobSerializer(job)
+        employer_profile = get_object_or_404(EmployerProfile, user=job.user)
         data = serializer.data
+
         data["time_till"] = job.time_till
         data["is_active"] = job.is_job_active
+        data["employer_logo"] = str(employer_profile.logo)
+        data["employer_cover_page"] = str(employer_profile.cover_page)
         return response.Response(data, status=status.HTTP_200_OK)
 
     def list(self, request, *args, **kwargs):
@@ -50,9 +55,12 @@ class JobViewSet(ModelViewSet):
         jobs_data = []
         for job in jobs:
             serializer = job_serializer.JobSerializer(job)
+            employer_profile = get_object_or_404(EmployerProfile, user=job.user)
             data = serializer.data
             data["time_till"] = job.time_till
             data["is_active"] = job.is_job_active
+            data["employer_logo"] = str(employer_profile.logo)
+            data["employer_cover_page"] = str(employer_profile.cover_page)
             jobs_data.append(data)
         return response.Response(jobs_data, status=status.HTTP_200_OK)
 

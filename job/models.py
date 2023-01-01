@@ -2,6 +2,7 @@ from django.db import models
 from django_mysql.models import ListCharField
 from django.conf import settings
 from datetime import date
+from constant.constant import JOB_LEVEL_CHOICES, EMPLOYMENT_TYPES_CHOICE, JOB_CATEGORY_CHOICE
 
 
 class Job(models.Model):
@@ -11,12 +12,15 @@ class Job(models.Model):
     job_name = models.CharField(verbose_name="job  name",
                                 max_length=150)
     job_category = models.CharField(verbose_name="job category",
-                                    max_length=150)
+                                    max_length=150,
+                                    choices=JOB_CATEGORY_CHOICE)
     job_level = models.CharField(verbose_name="job level",
-                                 max_length=150)
+                                 max_length=150,
+                                 choices=JOB_LEVEL_CHOICES)
     no_of_vacancy = models.PositiveSmallIntegerField(verbose_name="no of vacancy")
     employment_type = models.CharField(verbose_name="employment type",
-                                       max_length=150)
+                                       max_length=150,
+                                       choices=EMPLOYMENT_TYPES_CHOICE)
     street_address = models.CharField(verbose_name="street address",
                                       max_length=150)
     city = models.CharField(verbose_name="city",
