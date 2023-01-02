@@ -106,3 +106,26 @@ def employer_profile_created(employer_auth_client, employer_registered):
         response = employer_auth_client.post("/api/employer/profile/", payload, format='multipart')
         return response.data
 
+
+@pytest.fixture
+def job_payload(employer_profile_created):
+    return dict(
+        user=employer_profile_created["user"],
+        job_name="some job",
+        job_category="Training & Communication Associate",
+        job_level="entry level",
+        no_of_vacancy=1,
+        employment_type="internship",
+        street_address="st 12",
+        city="city1",
+        offered_salary=30000,
+        application_deadline="2023-01-10",
+        education_level="bachelor",
+        experience_level=2,
+        skills_required="python, java",
+        other_specifications="some specifications",
+        job_description="some description"
+    )
+
+
+

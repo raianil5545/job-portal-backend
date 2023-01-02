@@ -18,7 +18,7 @@ PROVINCE_CHOICE = (
 EMPLOYMENT_TYPES_CHOICE = (
     ("full time", "full time"),
     ("part time", "part time"),
-    ("intership", "intership")
+    ("internship", "intership")
 )
 
 JOB_CATEGORY_CHOICE = (

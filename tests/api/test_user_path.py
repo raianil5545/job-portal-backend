@@ -30,6 +30,15 @@ def test_login_user(applicant_registered, client):
     assert response.status_code == 200
 
 @pytest.mark.django_db
+def test_get_user(applicant_registered, applicant_auth_client):
+    response = applicant_auth_client.get("/api/user/get-user/")
+
+    assert response.status_code == 200
+    assert response.data["first_name"] == applicant_registered.first_name
+    assert response.data["email"] == applicant_registered.email
+    assert not "password" in response.data
+
+@pytest.mark.django_db
 def test_login_user_fail(applicant_registered, client):
     response = client.post("/api/user/login/", {
         "email": "applicant2@gmail.com",
